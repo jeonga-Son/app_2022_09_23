@@ -34,4 +34,13 @@ public interface ArticleRepository {
             SELECT LAST_INSERT_ID()
             """)
     public long getLastInsertId();
+
+    @Select("""
+            <script>
+            SELECT *
+            FROM article
+            WHERE id = #{id}
+            </script>    
+            """)
+    List<Article> getArticleById(long id);
 }

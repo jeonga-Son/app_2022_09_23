@@ -25,4 +25,8 @@ public class ArticleService {
 
         return articleRepository.getLastInsertId();
     }
+
+    public List<Article> getArticleById(long id) {
+        return articleRepository.getArticleById(id);
+    }
 }
