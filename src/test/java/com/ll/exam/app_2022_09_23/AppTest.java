@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @SpringBootTest
 //  @Transactional 포함된 메서드가 호출되면, TransactionalManager를 사용하여 트랜잭션을 시작한다.
 //메서드가 실행하기 전 begin을 호출하고, 메서드가 종료된 뒤 commit을 호출한다. 비정상일 경우, Rollback한다.
@@ -28,8 +30,10 @@ class AppTest {
 
 	@Test
 	@DisplayName("게시물 작성")
-	void t2() {
-		articleService.write("제목3", "내용3");
+	 void t2() {
+		long id = articleService.write("제목3", "내용3");
+
+		assertThat(id).isGreaterThan(0);
 	}
 
 }
