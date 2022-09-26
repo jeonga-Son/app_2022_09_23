@@ -49,6 +49,22 @@ class AppTest {
 	}
 
 	@Test
+	@DisplayName("게시물들 본문 검색")
+	void t5() {
+		List<Article> articles = articleService.search("content", "제목");
+		assertThat(articles.size()).isEqualTo(0);
+
+		articles = articleService.search("content", "내용");
+		assertThat(articles.size()).isEqualTo(2);
+
+		articles = articleService.search("content", "1");
+		assertThat(articles.size()).isEqualTo(1);
+
+		articles = articleService.search("content", "2");
+		assertThat(articles.size()).isEqualTo(1);
+	}
+
+	@Test
 	@DisplayName("게시물 작성")
 	 void t2() {
 		long id = articleService.write("제목3", "내용3");
