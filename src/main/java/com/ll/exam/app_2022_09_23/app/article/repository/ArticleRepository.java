@@ -44,4 +44,17 @@ public interface ArticleRepository {
             </script>    
             """)
     List<Article> getArticleById(long id);
+
+
+    @Select("""
+			<script>
+			SELECT A.*
+			FROM article AS A
+			WHERE 1
+			<if test="kw != ''">
+			AND A.subject LIKE CONCAT('%', #{kw}, '%')
+			</if>
+			</script>
+			""")
+    List<Article> search(String kwType, String kw);
 }
