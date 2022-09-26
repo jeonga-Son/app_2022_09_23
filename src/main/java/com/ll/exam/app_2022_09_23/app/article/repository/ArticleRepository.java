@@ -28,6 +28,7 @@ public interface ArticleRepository {
             </script>
             """)
     void write(String subject, String content);
+    // 위에 코드 안되면 void write(@Param("subject") String subject(이름 아무거나 상관 없음), String content); 이런식으로 코드 작성.
 
 
     @Select("""
