@@ -30,5 +30,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // beforeActionInterceptor 실행 후 needToLoginInterceptor이 실행된다.
         // 즉 먼저 등록된 것을 먼저 실행한다.
         ir.addPathPatterns("/article/write");
+        ir.addPathPatterns("/member/me");
     }
 }
