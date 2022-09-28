@@ -9,11 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component
 @Slf4j
-// BeforeActionInterceptor 모든 액션을 실행하기 전에 실행하는 것.
-public class BeforeActionInterceptor implements HandlerInterceptor {
+public class NeedToLoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("BeforeActionInterceptor::preHandle 실행됨");
+        log.debug("NeedToLoginInterceptor::preHandle 실행됨");
+
+        boolean isLogined = false; // 임시
+
+        if (isLogined == false) {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
+            response.getWriter().append("로그인 후 이용바랍니다.");
+
+            return false;
+
+        }
 
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
