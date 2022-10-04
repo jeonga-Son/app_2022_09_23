@@ -10,6 +10,21 @@
 * 인터셉터는 학습을 시켜야한다.
 * 모든요청은 들어올 때와 나갈 때 두번 인터셉터를 통과한다.
 * 들어오는 시점에는 preHandle, 나갈때는 postHandle이 작동한다.
+* 컨트롤러(Controller)의 '핸들러(Handler)'를 호출하기 전과 후에 요청과 응답을 참조하거나 가공할수 있는 일종의 필터이다.
+* interceptr 란 단어는 '낚아채다'라는 의미이다. 해당 단어의 의미와 같이 사용자 요청에 의해 서버에 들어온
+Request 객체를 컨트롤러의 핸들러(사용자가 요청한 url에 따라 실행되어야 할 메서드, 이하 핸들러)로
+도달하기전에 낚아채서 개발자가 원하는 추가적인 작업을 한 후 핸들러로 보낼수 있도록 해준다.
+
+<br>
+
+## 🏷️HandlerInterceptor 메소드
+* preHandle(request, response, handler)
+  - 지정된 컨트롤러의 동작 이전에 수행할 동작 (사전제어).
+* postHandle(request, response, handler, modelAndView)
+    - 지정된 컨트롤러의 동작 이후에 처리할 동작 (사후 제어).
+    - Spring MVC의 Dispatcher Servlet이 화면을 처리하기 전에 동작.
+* afterCompletion(request, response, handler, exception)
+  - Dispatcher Servlet의 화면 처리가 완료된 이후 처리할 동작.
 
 <br>
 
