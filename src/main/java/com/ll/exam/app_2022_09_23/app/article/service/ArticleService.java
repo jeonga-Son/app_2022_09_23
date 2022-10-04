@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArticleService {
     private final ArticleRepository articleRepository;
+
     public List<Article> getArticles() {
         return articleRepository.getArticles();
     }
@@ -26,7 +27,7 @@ public class ArticleService {
         return articleRepository.getLastInsertId();
     }
 
-    public List<Article> getArticleById(long id) {
+    public Article getArticleById(long id) {
         return articleRepository.getArticleById(id);
     }
 

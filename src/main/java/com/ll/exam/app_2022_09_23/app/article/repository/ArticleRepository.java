@@ -3,12 +3,14 @@ package com.ll.exam.app_2022_09_23.app.article.repository;
 import com.ll.exam.app_2022_09_23.app.article.dto.Article;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
 public interface ArticleRepository {
+
     @Select("""
             <script>
             SELECT *
@@ -16,7 +18,6 @@ public interface ArticleRepository {
             </script>
             """)
     List<Article> getArticles();
-
 
     @Insert("""
             <script>
@@ -27,7 +28,7 @@ public interface ArticleRepository {
             content = #{content}
             </script>
             """)
-    void write(String subject, String content);
+    void write(@Param("subject") String subject, String content);
     // 위에 코드 안되면 void write(@Param("subject") String subject(이름 아무거나 상관 없음), String content); 이런식으로 코드 작성.
 
 
@@ -41,13 +42,12 @@ public interface ArticleRepository {
             SELECT *
             FROM article
             WHERE id = #{id}
-            </script>    
+            </script>
             """)
-    List<Article> getArticleById(long id);
-
+    Article getArticleById(long id);
 
     @Select("""
-			<script>
+            <script>
             SELECT A.*
             FROM article AS A
             WHERE 1
@@ -64,7 +64,7 @@ public interface ArticleRepository {
                              A.subject LIKE CONCAT('%', #{kw}, '%')
                              OR
                              A.content LIKE CONCAT('%', #{kw}, '%')
-                        )
+                         )
                     </otherwise>
                 </choose>
             </if>

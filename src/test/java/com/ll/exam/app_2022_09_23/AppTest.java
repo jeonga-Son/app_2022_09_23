@@ -31,12 +31,12 @@ class AppTest {
 	@Test
 	@DisplayName("게시물 단건 조회")
 	void t3() {
-		List<Article> articles = articleService.getArticleById(2L);
-		assertThat(articles).isNotNull();
+		Article article = articleService.getArticleById(2L);
+		assertThat(article).isNotNull();
 	}
 
 	@Test
-	@DisplayName("게시물들 제목 검색")
+	@DisplayName("게시물 제목 검색")
 	void t4() {
 		List<Article> articles = articleService.search("subject", "1");
 		assertThat(articles.size()).isEqualTo(1);
@@ -49,7 +49,7 @@ class AppTest {
 	}
 
 	@Test
-	@DisplayName("게시물들 본문 검색")
+	@DisplayName("게시물 내용 검색")
 	void t5() {
 		List<Article> articles = articleService.search("content", "제목");
 		assertThat(articles.size()).isEqualTo(0);
@@ -66,10 +66,9 @@ class AppTest {
 
 	@Test
 	@DisplayName("게시물 작성")
-	 void t2() {
+	void t2() {
 		long id = articleService.write("제목3", "내용3");
 
 		assertThat(id).isGreaterThan(0);
 	}
-
 }

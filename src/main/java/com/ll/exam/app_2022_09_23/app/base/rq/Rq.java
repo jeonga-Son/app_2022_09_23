@@ -17,7 +17,6 @@ public class Rq {
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
     private final HttpSession session;
-
     @Getter
     private String alertMsg;
 
