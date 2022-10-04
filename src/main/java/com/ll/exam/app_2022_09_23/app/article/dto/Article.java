@@ -10,4 +10,7 @@ public class Article {
     private String subject;
     private String content;
     private long memberId;
+
+    private String extra_member_name;
+    private String extra_member_username;
 }
